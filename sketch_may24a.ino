@@ -1,4 +1,3 @@
-#include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 #define MQ3pin 0
@@ -146,7 +145,11 @@ void loop(){
         display.setCursor(60,0);
         display.println("mg/L");
         display.display();
+        if(val_aer >= (float)0.4){
+          tone(buzzerPin, 1000);
+        }
         delay(5000);
+        noTone(buzzerPin);
         display.clearDisplay();
 
         display.setCursor(0,0);
